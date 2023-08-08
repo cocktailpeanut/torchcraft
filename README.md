@@ -28,11 +28,13 @@ This may result in your project not taking advantage of your GPU at all, or not 
 
 The old way of installing pytorch is manually figuring out which version you can install for your device, and the figuring out the correct install command for your device.
 
+The PyTorch site even has an interactive web app for this: https://pytorch.org/get-started/locally/
+
 ![torch.gif](torch.gif)
 
 # The New Way (torchcraft)
 
-You really shouldn't have to do any of this manually. The computer already knows its own GPU and knows its own OS. It should be able to automatically figure out what install command to run.
+But you really shouldn't have to do any of this manually. The computer already knows its own GPU and knows its own OS. It should be able to automatically figure out what install command to run.
 
 And THIS, is what Torchcraft does. Torchcraft automates installation of Pytorch by automatically detecting:
 
