@@ -1,0 +1,12 @@
+{
+  "name": "torchcraft",
+  "version": "0.0.10",
+  "description": "dead simple pip install torch that just works",
+  "main": "index.js",
+  "bin": "bin/index.js",
+  "author": "cocktailpeanuts@proton.me",
+  "license": "MIT",
+  "dependencies": {
+    "systeminformation": "^5.18.12"
+  }
+}
