@@ -60,7 +60,7 @@ pip install -r torchcraft.txt
 pip install -r requirements.txt
 ```
 
-This works because by the time we reach Step 3, the correct torch has been installed from step 1 and 2. And Step 3 will simply 
+This works because by the time we reach Step 3, the correct torch has been installed from step 1 and 2. And Step 3 will simply ignore all the torch related dependencies, saying **"Requirement already satisfied"**.
 
 # How does it work?
 
