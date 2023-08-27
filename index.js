@@ -12,20 +12,20 @@ const os = require('os')
 const fs = require('fs')
 const si = require('systeminformation')
 class Torchcraft {
-  gpu() {
+  gpus() {
     return si.graphics().then((g) => {
       if (g && g.controllers && g.controllers.length > 0) {
-        return g.controllers[0].vendor.toLowerCase()
+        return g.controllers.map((x) => { return x.vendor.toLowerCase() })
       } else {
-        return null
+        return []
       }
     })
   }
-  resolve(platform, gpu) {
+  resolve(platform, gpus) {
     if (platform === "win32") {
-      if (gpu === "nvidia") {
+      if (gpus.includes("nvidia")) {
         return path.resolve(__dirname, "requirements", "win32-nvidia.txt")
-      } else if (gpu === "amd") {
+      } else if (gpus.includes("amd") || gpus.includes("advanced micro devices")){
         return path.resolve(__dirname, "requirements", "win32-cpu.txt") // amd not supported on windows yet?
       } else {
         return path.resolve(__dirname, "requirements", "win32-cpu.txt")
@@ -33,9 +33,9 @@ class Torchcraft {
     } else if (platform === "darwin") {
       return path.resolve(__dirname, "requirements", "darwin-default.txt")
     } else if (Platform === "linux") {
-      if (gpu === "nvidia") {
+      if (gpus.includes("nvidia")) {
         return path.resolve(__dirname, "requirements", "linux-nvidia.txt")
-      } else if (gpu === "amd") {
+      } else if (gpus.includes("amd") || gpus.includes("advanced micro devices")){
         return path.resolve(__dirname, "requirements", "linux-amd.txt")
       } else {
         return path.resolve(__dirname, "requirements", "linux-cpu.txt")
@@ -45,8 +45,8 @@ class Torchcraft {
     }
   }
   async pip(run) {
-    let gpu = await this.gpu()
-    let src = this.resolve(os.platform(), gpu)
+    let gpus = await this.gpus()
+    let src = this.resolve(os.platform(), gpus)
     await fs.promises.copyFile(src, "torchcraft.txt")
   }
 }
