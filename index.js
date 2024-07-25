@@ -32,7 +32,7 @@ class Torchcraft {
       }
     } else if (platform === "darwin") {
       return path.resolve(__dirname, "requirements", "darwin-default.txt")
-    } else if (Platform === "linux") {
+    } else if (platform === "linux") {
       if (gpus.includes("nvidia")) {
         return path.resolve(__dirname, "requirements", "linux-nvidia.txt")
       } else if (gpus.includes("amd") || gpus.includes("advanced micro devices")){

@@ -1,6 +1,6 @@
 {
   "name": "torchcraft",
-  "version": "0.0.12",
+  "version": "0.0.16",
   "description": "dead simple pip install torch that just works",
   "main": "index.js",
   "bin": "bin/index.js",
